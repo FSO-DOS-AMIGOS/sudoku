@@ -1,0 +1,9 @@
+version: '3.5'
+services:
+
+  app:
+    container_name: sudoku
+    build: .
+    command: ["./sudoku"]
+    volumes:
+      - ./src/:/sudoku/src/
