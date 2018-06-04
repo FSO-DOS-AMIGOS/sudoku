@@ -4,5 +4,5 @@ COPY . /sudoku
 
 WORKDIR /sudoku/src/
 
-RUN gcc -o sudoku main.c && \
+RUN gcc main.c -o sudoku -lpthread && \
     chmod +x sudoku

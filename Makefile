@@ -4,7 +4,7 @@ build:
 
 run:
 	@echo "\nRunning Sudoku ...\n"
-	@(docker-compose up -d app && && docker logs sudoku && echo "\n")
+	@docker run -w /sudoku/src sudoku:latest bash -c "./sudoku"
 
 rm:
 	@echo "\nRemoving Sudoku container ...\n"

@@ -53,3 +53,9 @@ dkms.conf
 
 # binary
 src/sudoku
+sudoku
+main
+src/main
+
+# VSCODE files
+vscode/

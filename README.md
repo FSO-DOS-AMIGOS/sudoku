@@ -61,23 +61,21 @@ ou
 ### Usando o gcc
 1. Compile o arquivo c 
 ``` bash
-gcc -o sudoku src/main.c
+gcc src/main.c -o sudoku -lpthread
 ```
 
 2. Execute o binário gerado
 ``` bash
-./sudoku
+./sudoku assets/sudoku-desejado.txt
 ```
 
 ### Usando o makefile
 1. Construa o ambiente:
-
 ``` bash
 make build 
 ```
 
 2. Rode o ambiente pré-construído
-
 ``` bash
 make run
 ```
