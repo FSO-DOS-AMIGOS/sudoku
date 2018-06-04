@@ -38,27 +38,8 @@ responsabilidade é válida. O valor 0 indica que não é válida. Quando todas
 as threads terminarem suas tarefas, a thread pai realizará a checagem
 de cada entrada do array para determinar se o grid apresentado é válido.
 
-Caso não tenha o gcc instalado localmente, utilize a seção [Usando o docker](https://github.com/FSO-DOS-AMIGOS/sudoku#usando-o-docker) ou [Usando o makefile](https://github.com/FSO-DOS-AMIGOS/sudoku#usando-o-makefile)
+## Como Usar
 
-## Como usar
-
-1. Instale o [Docker CE](https://docs.docker.com/install/) ***
-
-2. Clone esse repositório - `git clone https://github.com/FSO-DOS-AMIGOS/sudoku.git`
-
-3. Navegue até a pasta recém-clonada.
-
-4. Siga alguma das seções de execução: [Docker](https://github.com/FSO-DOS-AMIGOS/sudoku#usando-o-docker), [Makefile](https://github.com/FSO-DOS-AMIGOS/sudoku#usando-o-makefile) ou [Gcc](https://github.com/FSO-DOS-AMIGOS/sudoku#usando-o-gcc)
-
-*** _Passo Opcional_
-
-NOTA: Se você não seguiu os [passos pós-instalação](https://docs.docker.com/install/linux/linux-postinstall/) para o docker você precisará usar `sudo` junto as intruções das seções [Usando o docker](https://github.com/FSO-DOS-AMIGOS/sudoku#usando-o-docker) ou [Usando o makefile](https://github.com/FSO-DOS-AMIGOS/sudoku#usando-o-makefile), por exemplo:
-
-`sudo docker build -t sudoku .`
-ou
-`sudo make build`
-
-### Usando o gcc
 1. Compile o arquivo c 
 ``` bash
 gcc src/main.c -o sudoku -lpthread
@@ -68,48 +49,9 @@ gcc src/main.c -o sudoku -lpthread
 ``` bash
 ./sudoku assets/sudoku-desejado.txt
 ```
+_exemplo_:
 
-### Usando o makefile
-1. Construa o ambiente:
 ``` bash
-make build 
+./sudoku assets/1.txt
 ```
 
-2. Rode o ambiente pré-construído
-``` bash
-make run
-```
-
-#### Outros comandos úteis
-
-Remove o ambiente encapsulado
-``` bash
-make rm
-```
-
-Remove a rede local encapsulada
-``` bash
-make rm-network
-```
-
-Remove a imagem criada pelo `make build`
-``` bash
-make rm-img
-```
-
-Mostra uma listagem de todos os comandos e uma breve descrição deles
-``` bash
-make help
-```
-
-### Usando o docker
-
-1. _Builde_ o ambiente do _Dockerfile_
-``` bash
-docker build -t sudoku .
-```
-
-2. Execute o app
-``` bash
-docker run -w /sudoku/src sudoku:latest bash -c "./sudoku"
-```

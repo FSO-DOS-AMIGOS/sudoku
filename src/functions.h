@@ -14,12 +14,8 @@ int grid[9];
 pthread_mutex_t line_mutex, column_mutex, grid_mutex; 
 
 int verify(int *vector){
-	/*
-	verify retuns 0 if there's a error.
-		   returns 1 if there's no error.
-	*/
+    int i, my_vector[9] = {0}, j = 0;
 
-	int i, my_vector[9] = {0}, j = 0;
 	for(i=0; i<9; i++){
 		if(i == 0){
 			my_vector[i] = vector[i];
@@ -37,21 +33,21 @@ int verify(int *vector){
 				j++;
 			}
 		}
-
 	}
-
 	return 1;
 }
 
 void *column_thread(void *param){
-	int *my_id = (int *) param, i, my_vector[9];;
-	for(i=0; i<9; i++){
+	int *my_id = (int *) param, i, my_vector[9];
+	
+    for(i=0; i<9; i++){
 		pthread_mutex_lock(&line_mutex);	
 			my_vector[i] = sudoku_matrix[i][*my_id];
 		pthread_mutex_unlock(&line_mutex);	
 	}
 
 	column[*my_id] = verify(my_vector);
+
 	pthread_exit(0);
 }
 
