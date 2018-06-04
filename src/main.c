@@ -45,11 +45,15 @@ int main(int argc, char *argv[]){
 	for(i = 0; i < 9; i++){
 		for(j = 0; j< 9; j++){
 			
-			do{
-				read(fd,&c,1);
-			}while(c == ' ' || c == '\n');
-
+			while(1){
+					read(fd, &c, 1);
+					if(c >= '1' && c <= '9'){
+						break;
+					}	
+				}
+					
 			sudoku_matrix[i][j] = c - '0';
+			
 		}
 	}
 
@@ -76,7 +80,7 @@ int main(int argc, char *argv[]){
 	}
 
 	//testing
-	/*
+	
 	for(i = 0; i < 9; i++){
 		for(j = 0; j< 9; j++){
 
@@ -84,7 +88,7 @@ int main(int argc, char *argv[]){
 		}
 		printf("\n");
 	}
-	*/
+	
 
 	for(i=0;i<9;i++){
 		if(line[i] == 0){
@@ -158,6 +162,19 @@ void *column_thread(void *param){
 	}
 
 	column[*my_id] = verify(my_vector);
+	/*
+	pthread_mutex_lock(&line_mutex);
+		
+		for(i=0; i<9; i++){
+			printf("%d ",my_vector[i]);
+		}
+		printf("\n");
+
+	pthread_mutex_unlock(&line_mutex);
+	*/
+
+
+
 	pthread_exit(0);
 }
 
